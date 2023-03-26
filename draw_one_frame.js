@@ -4,11 +4,9 @@ var a=100;
 var b=100;
 
 function draw_one_frame() {
-  //background(255);
-
-  drawHexagon(250, 250, 100);
-
-
+  background(255);
+//////////////////////////////////////////////////
+  //drawHexagon(100, 100, 70);
 function drawHexagon(x, y, radius) {
   beginShape();
   for (let i = 0; i < 6; i++) {
@@ -19,21 +17,53 @@ function drawHexagon(x, y, radius) {
   }
   endShape(CLOSE);
 }
+////////////////////////////////////////////////////
+//let primary = colour(afafa)
+//let secondary = colour (sawg)
+let hexColour = color("#202020")
+
+
+//let noiseColour = getNoiseValue (0,0, 0.8, "colour",0 ,1, 1)
+//let noisyColour;
+
+//let pixelSize =width / 1
+//let pixelSpacing =width / 100
+
+
+//for(let x = 0; x < width / pixelSpacing; x++){
+    //for(let y = 0; y < height / pixelSpacing; y++){
+	//noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, 0.8, "colour",0 ,1, 1)
+	//noisyColour = lerpColour(primary,secondary)
+	//fill(noisyColour)
+	//rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
+//}
+//}
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+let hexSize = 70
+let x_spacing = 220
+let y_spacing = 64
+
+fill(hexColour)
+
+
+for(let x = 0; x < width / x_spacing; x++){
+    for(let y = 0; y -1 < height / y_spacing; y++){
+      let xPos = x_spacing * x;
+      let yPos = y_spacing * y;
+
+	  // add an offset to every second row
+      if (y % 2 == 1) { 
+        xPos += x_spacing / 2;
+      }
+      drawHexagon(xPos, yPos, hexSize);
+    }
+  }
 }
-
-//function drawtriangle(x,y,r){
-	//triangle(x, y, x+7*r, y-13.75*r, x+14*r, y);
-//}
-
-//function drawflower(i,k){
-		//if(i%2==1){
-		//	fill(255,(k*0.4)%255,30);
-		//	stroke(k%255,255,0);
-		//	arc(0,0,150+i+150*sin(k*PI/24),150,0,PI / 40);
-		//}
-		//else{
-		//	fill(k%255,0,255);
-		//	stroke(0,(k*0.4)%255,255);
-		//	arc(0,0,(100+100*cos(k*PI/24))%255,50,0,PI / 20);
-		//}
-//}
