@@ -18,26 +18,25 @@ function drawHexagon(x, y, radius) {
   endShape(CLOSE);
 }
 ////////////////////////////////////////////////////
-//let primary = colour(afafa)
-//let secondary = colour (sawg)
+let primary = color("#202020")
+let secondary = color ("#FF0059")
 let hexColour = color("#202020")
 
+//////////////////////////////////////////////////////
+let noiseColour = getNoiseValue (0,0, 0.8, "noiseColour",0 ,1, 1)
+let noisyColour;
 
-//let noiseColour = getNoiseValue (0,0, 0.8, "colour",0 ,1, 1)
-//let noisyColour;
+let pixelSize =width / 10
+let pixelSpacing =width / 10
 
-//let pixelSize =width / 1
-//let pixelSpacing =width / 100
-
-
-//for(let x = 0; x < width / pixelSpacing; x++){
-    //for(let y = 0; y < height / pixelSpacing; y++){
-	//noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, 0.8, "colour",0 ,1, 1)
-	//noisyColour = lerpColour(primary,secondary)
-	//fill(noisyColour)
-	//rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
-//}
-//}
+for(let x = 0; x < width / pixelSpacing; x++){
+    for(let y = 0; y < height / pixelSpacing; y++){
+	noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, 0.8, "colour",0 ,1, 1)
+	noisyColour = lerpColor(primary,secondary,noiseColour)
+	fill(noisyColour)
+	rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
+}
+}
 
 
 
