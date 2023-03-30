@@ -18,43 +18,41 @@ function drawHexagon(x, y, radius) {
   endShape(CLOSE);
 }
 ////////////////////////////////////////////////////
-let primaryLight = color("#00f2ff")
-let secondaryLight = color ("#FF0059")
+//let primary = colour(afafa)
+//let secondary = colour (sawg)
 let hexColour = color("#202020")
-let hexColourSmall = color("#131313")
-
-noStroke();
-//////////////////////////////////////////////////////
-let noiseColour = getNoiseValue (0,0, 0.8, "noiseColour",0 ,1, 1)
-let noisyColour;
-let pixelSize =width / 10
-let pixelSpacing =width / 50
-
-for(let x = 0; x < width / pixelSpacing; x++){
-    for(let y = 0; y < height / pixelSpacing; y++){
-
-	noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, cur_frac/ 2, "colour",0 ,1, 200)
-	noisyColour = lerpColor(primaryLight,secondaryLight,noiseColour)
-	fill(noisyColour)
-	rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
 
 
-    moveXMap = map(cur_frac, 0, 1, pixelSpacing*x, pixelSize*(x+1))
-    fill(noisyColour)
-    rect(moveXMap,pixelSpacing*y, pixelSize) 
-}
-}
+//let noiseColour = getNoiseValue (0,0, 0.8, "colour",0 ,1, 1)
+//let noisyColour;
+
+//let pixelSize =width / 1
+//let pixelSpacing =width / 100
+
+
+//for(let x = 0; x < width / pixelSpacing; x++){
+    //for(let y = 0; y < height / pixelSpacing; y++){
+	//noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, 0.8, "colour",0 ,1, 1)
+	//noisyColour = lerpColour(primary,secondary)
+	//fill(noisyColour)
+	//rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
+//}
+//}
+
+
+
+
+
+
+
 
 ///////////////////////////////////////////////////////
 // hexgrid settings
 let hexSize = 70
-let hexSizeSmall = 62
 let x_spacing = 220
 let y_spacing = 64
 
-//fill(hexColour)
-//let hexColour = color("#202020")
-
+fill(hexColour)
 
 
 // draw a hexagonal grid
@@ -69,10 +67,6 @@ for(let x = 0; x < width / x_spacing; x++){
       fill(hexColour)
       stroke(0)
       drawHexagon(xPos, yPos, hexSize);
-
-      fill(hexColourSmall)
-      noStroke()
-      drawHexagon(xPos, yPos, hexSizeSmall);
     }
   }
 }
