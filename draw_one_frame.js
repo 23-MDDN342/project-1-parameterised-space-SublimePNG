@@ -4,9 +4,9 @@ var a=100;
 var b=100;
 
 function draw_one_frame(cur_frac) {
-  background(255);
-//////////////////////////////////////////////////
-  //drawHexagon(100, 100, 70);
+  
+////////////////////////////////////  SETUP  //////////////////////////////////////////////////////
+// draws a hexagon
 function drawHexagon(x, y, radius) {
   beginShape();
   for (let i = 0; i < 6; i++) {
@@ -17,56 +17,73 @@ function drawHexagon(x, y, radius) {
   }
   endShape(CLOSE);
 }
-////////////////////////////////////////////////////
+
+// primary and secondary colurs of the noise
 let primaryLight = color("#00f2ff")
 let secondaryLight = color ("#FF0059")
-let hexColour = color("#202020")
-let hexColourSmall = color("#131313")
 
-noStroke();
-//////////////////////////////////////////////////////
-let noiseColour = getNoiseValue (0,0, 0.8, "noiseColour",0 ,1, 1)
-let noisyColour;
+
+///////////////////////////////////  PIXEL GRID  /////////////////////////////////////////////////
+
+// pixel settings
 let pixelSize =width / 10
-let pixelSpacing =width / 50
+let pixelSpacing =width / 100
 
+//draws the grid of pixels
 for(let x = 0; x < width / pixelSpacing; x++){
-    for(let y = 0; y < height / pixelSpacing; y++){
-
-  noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, cur_frac/ 2, "colour",0 ,1, 200)
+    for(let y = 0; y < height / pixelSpacing; y++){ 
+ 
+  // noisy colour for background pixels
+  noiseColour = getNoiseValue (pixelSpacing*x,pixelSpacing*y, cur_frac/2, "colour",0.2 ,1, height/2)
   noisyColour = lerpColor(primaryLight,secondaryLight,noiseColour)
+  
+  noStroke();
   fill(noisyColour)
   rect(pixelSpacing*x,pixelSpacing*y, pixelSize);
-
-    moveXMap = map(cur_frac, 0, 1, pixelSpacing*x, pixelSize*(x+1))
-    fill(noisyColour)
-    rect(moveXMap,pixelSpacing*y, pixelSize) 
 }
 }
 
-///////////////////////////////////////////////////////
+//////////////////////////////////  HEXAGON GRID  ////////////////////////////////////////////////
 // hexgrid settings
-let hexSize = 70
-let hexSizeSmall = 62
-let x_spacing = 220
-let y_spacing = 64
+let hexSize = width / 20
+let hexSizeSmall = width / 23
 
-//fill(hexColour)
-//let hexColour = color("#202020")
+//let hexSize = width * 70
+//let hexSizeSmall = width * 62
 
+let x_spacing = width / 6
+let y_spacing = width / 20.7
 
-// draw a hexagonal grid
-for(let x = 0; x < width / x_spacing; x++){
+//let x_spacing = 220
+//let y_spacing = 64
+
+// draws the grid of hexagons
+for(let x = 0; x -1 < width / x_spacing; x++){
     for(let y = 0; y -1 < height / y_spacing; y++){
       let xPos = x_spacing * x;
       let yPos = y_spacing * y;
-    // add an offset to every second row
+     // adds an offset to every second row
       if (y % 2 == 1) { 
         xPos += x_spacing / 2;
       }
-      fill(hexColour)
+
+      // noisycolour for hex edges
+      noiseColour2 = getNoiseValue (xPos*x,yPos*y, cur_frac/2, "colour",0 ,1, height/2)
+      noisyColour2 = lerpColor(primaryLight,secondaryLight,noiseColour)
+      // smaller hex colour
+      let hexColourSmall = color("#0f0f0f")
+
+     // edge lighting on large hexagons
+      fill(noisyColour2)
       stroke(0)
       drawHexagon(xPos, yPos, hexSize);
+
+     // dark overlay for large hexagons to dim colour
+      fill(15, 15, 15, 220)
+      stroke(0)
+      drawHexagon(xPos, yPos, hexSize);
+
+    // smaller inner hexagons
       fill(hexColourSmall)
       noStroke()
       drawHexagon(xPos, yPos, hexSizeSmall);
