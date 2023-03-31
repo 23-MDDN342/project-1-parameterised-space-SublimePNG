@@ -50,5 +50,6 @@ function draw_one_frame(cur_frac) {
   textSize(30);
   text("A", cur_x1, ellipse_y1);
   text("B", cur_x2, ellipse_y2);
+  /////test
 }
 

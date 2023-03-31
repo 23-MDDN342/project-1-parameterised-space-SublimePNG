@@ -1,13 +1,10 @@
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=10300931&assignment_repo_type=AssignmentRepo)
 ### 2023 MDDN342 Project 1: Parameterised Space
-EXAMPLE README 
+README 
 
-My design is inspired by fireworks and flowers. I want it to be full of changes, so that every frame can have a fresh feeling.
+My design is inspired by a cyberpunk neon theme comprised of hexagonal tiles and neon underlighting. I wanted the lighting to look electric in nature.
 
-In terms of concrete performance, I draw different geometric figures, let them spread out, and overlay their number at the same time, through the time difference to make the whole dynamic background become enthusiastic.
+The the tiles themselves are made up of 3 hexagons layered to give the illusion of depth. One that mimics the colour of the light underneath to act as if it is lighting the sides of the tiles, a second the same size on top of it to dim the colour of the first and a third is a dark grey smaller sized hexagon to act as the main face of the tiles for the 3d effect.
 
-In terms of color, I made different shapes correspond to different colors, and changed the parameters so that they were different every time they appeared, so that there would be differences between different loops.
+The light underneath is made up of a grid of pixels changing colour corresponding to the animated noise underneath. The noise is made up of 2 colours. A cool red and bright blue which also blend at points to make a light purple, as a whole creating that contrasting cyberpunk look with the jittery speed of electricity. 
 
-In the initial design, I only added the circle. Through the color change of the circle and the superposition of the movement track, although it has a good effect, I think it is too monotonous.
-
-In the later stages, I added a lot of geometric shapes, which made the color and pattern more variable.
